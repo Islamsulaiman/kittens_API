@@ -1,4 +1,6 @@
 class KittensController < ApplicationController
+  before_action :set_kitten, only: %i[destroy]
+  
   def index
     @kittens = Kitten.all
   end
@@ -33,7 +35,16 @@ class KittensController < ApplicationController
     end
   end
 
+  def destroy 
+    @kitten.destroy
+    redirect_to kittens_path, notice: "Kitten is deleted successfully"
+  end
+
   private
+
+  def set_kitten
+    @kitten = Kitten.find(params[:id])
+  end
 
   def kitten_params
     params.require(:kitten).permit(:name, :age, :cuteness, :softness)

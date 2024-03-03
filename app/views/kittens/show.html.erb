@@ -6,5 +6,7 @@
     <strong>Softness:</strong><%= @kitten.softness %><br>
 </p>
 
-<% link_to "Edit Kitten", edit_kitten_path(@kitten) %> |
-<% link_to "Back to list", kittens_path %>
+<%= link_to "Edit Kitten", edit_kitten_path(@kitten) %> |
+<%= link_to "Back to list", kittens_path %><br>
+
+<%= button_to "Delete kitten", @kitten, method: :delete, data: { confirm: 'Are you sure?' } %>
