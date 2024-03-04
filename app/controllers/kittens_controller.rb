@@ -22,6 +22,7 @@ class KittensController < ApplicationController
     if @kitten.save
       redirect_to @kitten, notice: 'Kitten created successfully'
     else 
+      flash.now[:alert] = 'There was a problem creating the Kitten.'
       render :new
     end
   end
@@ -31,6 +32,7 @@ class KittensController < ApplicationController
     if @kitten.update(kitten_params)
       redirect_to @kitten, notice: "kitten was updated successfully"
     else 
+      flash.now[:alert] = 'There was a problem updating the Kitten.'
       render :edit
     end
   end
